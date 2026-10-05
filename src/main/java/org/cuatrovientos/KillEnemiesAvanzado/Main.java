@@ -1,4 +1,4 @@
-package org.cuatrovientos.KillEnemiesSimple;
+package org.cuatrovientos.KillEnemiesAvanzado;
 
 import java.util.ArrayList;
 import java.util.Collections;

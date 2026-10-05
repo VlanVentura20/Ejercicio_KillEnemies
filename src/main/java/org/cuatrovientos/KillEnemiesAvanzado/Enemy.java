@@ -1,4 +1,4 @@
-package org.cuatrovientos.KillEnemiesSimple;
+package org.cuatrovientos.KillEnemiesAvanzado;
 
 public class Enemy implements Character {
 
