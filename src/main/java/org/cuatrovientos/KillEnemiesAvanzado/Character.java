@@ -1,6 +1,8 @@
 package org.cuatrovientos.KillEnemiesAvanzado;
 
-public interface Character {
+import java.io.Serializable;
+
+public interface Character extends Serializable {
 
 	public boolean isEnemy();
 	
