@@ -43,37 +43,37 @@ public class Main {
 		
 		for (int i = 0; i <= misPersonajes.size() - 1; i++) {
 			if (misPersonajes.get(i).isEnemy()) {
-				System.out.println("El personaje " + i + " es un enemigo! ¡Matalo!");
-				
-				do {
-					System.out.println("¿Quieres matar al enemigo? (s/n): ");
-					leerConsola = readConsole.nextLine();
-					if (leerConsola.toLowerCase() != "n" && leerConsola.toLowerCase() != "s") {
-						System.out.println("Eso no es una opcion correcta");
-					}
-				} while (leerConsola.toLowerCase() != "n" && leerConsola.toLowerCase() != "s");
-
-				if (leerConsola.toLowerCase() != "s") {
+				System.out.println("El personaje Nº" + i + " es un enemigo! ¡Matalo!");
+			}  else {
+				System.out.println("El personaje Nº" + i + " es un amigo!");
+			}
+			
+			do {
+				System.out.println("¿Que quieres hace? (curar/atacar/nada): ");
+				leerConsola = readConsole.nextLine();
+				if (!leerConsola.toLowerCase().equals("curar") && !leerConsola.toLowerCase().equals("atacar") && !leerConsola.toLowerCase().equals("nada")) {
+					System.out.println("Eso no es una opcion correcta");
+				}
+			} while (!leerConsola.toLowerCase().equals("curar") && !leerConsola.toLowerCase().equals("atacar") && !leerConsola.toLowerCase().equals("nada"));
+			
+			if (misPersonajes.get(i).isEnemy()) {
+				if (leerConsola.toLowerCase().equals("curar")) {
+					misPersonajes.add(misPersonajes.get(i));
+				} else if (leerConsola.toLowerCase().equals("atacar")) {
 					Enemy miEnemigo = (Enemy) misPersonajes.get(i);
 					miEnemigo.kill();
+					misPersonajes.remove(i);
 				}
-				
 			} else {
-				System.out.println("El personaje " + i + " es un amigo!");
-				
-				do {
-					System.out.println("¿Quieres curar al amigo? (s/n): ");
-					leerConsola = readConsole.nextLine();
-					if (leerConsola.toLowerCase() != "n" && leerConsola.toLowerCase() != "s") {
-						System.out.println("Eso no es una opcion correcta");
-					}
-				} while (leerConsola.toLowerCase() != "n" && leerConsola.toLowerCase() != "s");
-				
-				if (leerConsola.toLowerCase() != "s") {
+				if (leerConsola.toLowerCase().equals("curar")) {
 					Friend miAmigo = (Friend) misPersonajes.get(i);
 					miAmigo.heal();
+				} else if (leerConsola.toLowerCase().equals("atacar")) {
+					misPersonajes.remove(i);
 				}
 			}
+			
+			
 			
 		}
 		
