@@ -4,10 +4,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
-
+	
+	static ArrayList<Character> misPersonajes = new ArrayList<Character>();
+	
+	public void contadorPersonajes() {
+		System.out.println("Hay " + misPersonajes.size() + " personajes");
+	}
+	
+	public void mostrarPersonajes() {
+		for (int i = 0; i <= misPersonajes.size() - 1; i++) {
+			if (misPersonajes.get(i).isEnemy()) {
+				System.out.println("Personaje Nº" + i + ": es un enemigo");
+			} else {
+				System.out.println("Personaje Nº" + i + ": es un amigo");
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
-
-		ArrayList<Character> misPersonajes = new ArrayList<Character>();
 		
 		misPersonajes.add(new Friend());
 		misPersonajes.add(new Friend());
