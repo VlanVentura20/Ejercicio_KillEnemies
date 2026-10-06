@@ -23,9 +23,9 @@ public class Main {
 
 		for (Character personaje : misPersonajes) {
 
-			if (personaje instanceof Enemy) {
+			if (personaje.isEnemy()) {
 				enemigos++;
-			} else if (personaje instanceof Friend) {
+			} else {
 				amigos++;
 			}
 		}
@@ -55,17 +55,13 @@ public class Main {
 		misPersonajes.clear();
 		miHeroe = new Hero();
 
-		misPersonajes.add(new Friend());
-		misPersonajes.add(new Friend());
-		misPersonajes.add(new Friend());
-		misPersonajes.add(new Friend());
-		misPersonajes.add(new Friend());
+		for (int i = 0; i < 5; i++) {
+		    misPersonajes.add(new Friend());
+		}
 
-		misPersonajes.add(new Enemy());
-		misPersonajes.add(new Enemy());
-		misPersonajes.add(new Enemy());
-		misPersonajes.add(new Enemy());
-		misPersonajes.add(new Enemy());
+		for (int i = 0; i < 5; i++) {
+		    misPersonajes.add(new Enemy());
+		}
 
 		Collections.shuffle(misPersonajes);
 	}
@@ -192,7 +188,6 @@ public class Main {
 							                continue;
 							            }
 							            
-
 							            miHeroe.setVida(miHeroe.getVida() - 1);
 							        }
 
