@@ -89,7 +89,7 @@ public class Main {
 			do {
 			    System.out.println("1. Jugar");
 			    System.out.println("2. Guardar partida");
-			    System.out.println("3. Borrar partida");
+			    System.out.println("3. Nueva partida");
 			    System.out.println("4. Salir");
 			    System.out.print("Elige una opción: ");
 
@@ -101,39 +101,66 @@ public class Main {
 	/////////////////////  OPCION 1  //////////////////
 
 	///////////////////////////////////////////////////
-			    	for (int i = 0; i <= misPersonajes.size() - 1; i++) {
-						if (misPersonajes.get(i).isEnemy()) {
-							System.out.println("El personaje Nº" + i + " es un enemigo! ¡Matalo!");
-						}  else {
-							System.out.println("El personaje Nº" + i + " es un amigo!");
-						}
-						
-						do {
-							System.out.println("¿Que quieres hace? (curar/atacar/nada): ");
-							leerConsola = readConsole.nextLine();
-							if (!leerConsola.toLowerCase().equals("curar") && !leerConsola.toLowerCase().equals("atacar") && !leerConsola.toLowerCase().equals("nada")) {
-								System.out.println("Eso no es una opcion correcta");
-							}
-						} while (!leerConsola.toLowerCase().equals("curar") && !leerConsola.toLowerCase().equals("atacar") && !leerConsola.toLowerCase().equals("nada"));
-						
-						if (misPersonajes.get(i).isEnemy()) {
-							if (leerConsola.toLowerCase().equals("curar")) {
-								misPersonajes.add(misPersonajes.get(i));
-							} else if (leerConsola.toLowerCase().equals("atacar")) {
-								Enemy miEnemigo = (Enemy) misPersonajes.get(i);
-								miEnemigo.kill();
-								misPersonajes.remove(i);
-							}
-						} else {
-							if (leerConsola.toLowerCase().equals("curar")) {
-								Friend miAmigo = (Friend) misPersonajes.get(i);
-								miAmigo.heal();
-							} else if (leerConsola.toLowerCase().equals("atacar")) {
-								misPersonajes.remove(i);
-							}
-						}
-						
-					}
+			    	ArrayList<Character> misPersonajesCopia = new ArrayList<>(misPersonajes);
+
+			    	for (int i = 0; i < misPersonajesCopia.size(); i++) {
+
+			    	    Character personaje = misPersonajesCopia.get(i);
+
+			    	    if (personaje.isEnemy()) {
+			    	        System.out.println("El personaje Nº" + i + " es un enemigo! ¡Mátalo!");
+			    	    } else {
+			    	        System.out.println("El personaje Nº" + i + " es un amigo!");
+			    	    }
+
+			    	    do {
+			    	        System.out.print("¿Qué quieres hacer? (curar/atacar/nada): ");
+
+			    	        leerConsola = readConsole.nextLine();
+
+			    	        if (!leerConsola.toLowerCase().equals("curar")
+			    	                && !leerConsola.toLowerCase().equals("atacar")
+			    	                && !leerConsola.toLowerCase().equals("nada")) {
+
+			    	            System.out.println("Eso no es una opción correcta");
+			    	        }
+
+			    	    } while (!leerConsola.toLowerCase().equals("curar")
+			    	            && !leerConsola.toLowerCase().equals("atacar")
+			    	            && !leerConsola.toLowerCase().equals("nada"));
+
+			    	    if (personaje.isEnemy()) {
+
+			    	        if (leerConsola.toLowerCase().equals("curar")) {
+
+			    	            misPersonajesCopia.add(personaje);
+
+			    	        } else if (leerConsola.toLowerCase().equals("atacar")) {
+
+			    	            Enemy miEnemigo = (Enemy) personaje;
+			    	            miEnemigo.kill();
+			    	            misPersonajesCopia.remove(personaje);
+			    	            i--;
+
+			    	        }
+
+			    	    } else {
+
+			    	        if (leerConsola.toLowerCase().equals("curar")) {
+
+			    	            Friend miAmigo = (Friend) personaje;
+			    	            miAmigo.heal();
+
+			    	        } else if (leerConsola.toLowerCase().equals("atacar")) {
+
+			    	            misPersonajesCopia.remove(personaje);
+			    	            i--;
+
+			    	        }
+			    	    }
+			    	}
+
+			    	misPersonajes = misPersonajesCopia;
 			        
 			    } else if (opcionJuego.equals("2")) {
 	///////////////////////////////////////////////////
