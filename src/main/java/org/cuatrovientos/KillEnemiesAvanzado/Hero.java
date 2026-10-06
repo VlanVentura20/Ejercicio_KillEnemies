@@ -2,6 +2,12 @@ package org.cuatrovientos.KillEnemiesAvanzado;
 
 public class Hero implements Character {
 
+	private int vida;
+	
+	public Hero() {
+		this.vida = 100;
+	}
+
 	private int cntEnemigosMatados;
 	private int cntAmigosDefendidos;
 	
@@ -27,6 +33,15 @@ public class Hero implements Character {
 	public void defend(Friend friend) {
 		System.out.println("¡He defendido a un amigo!");
 		cntAmigosDefendidos++;
+	}
+
+	@Override
+	public int getVida() {
+		return vida;
+	}
+
+	public void setVida(int vida) {
+		this.vida = vida;
 	}
 
 }

@@ -5,5 +5,6 @@ import java.io.Serializable;
 public interface Character extends Serializable {
 
 	public boolean isEnemy();
+	public int getVida();
 	
 }
