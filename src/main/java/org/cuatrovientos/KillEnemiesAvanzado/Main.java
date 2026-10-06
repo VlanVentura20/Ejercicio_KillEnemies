@@ -90,6 +90,7 @@ public class Main {
 		}
 
 	}
+	
 
 	public static void main(String[] args) {
 
@@ -119,7 +120,9 @@ public class Main {
 				if (opcionJuego.equals("1")) {
 
 ///////////////////////////////////////////////////
-/////////////////////  OPCION 1  //////////////////
+
+////////////////////// OPCION 1 ///////////////////
+
 ///////////////////////////////////////////////////
 
 					if (miHeroe.getVida() <= 0) {
@@ -185,9 +188,10 @@ public class Main {
 							            Enemy miEnemigo = (Enemy) personaje;
 
 							            if (miEnemigo.kill()) {
-							                misPersonajesCopia.remove(personaje);
+							                misPersonajesCopia.remove(i);
 							                continue;
 							            }
+							            
 
 							            miHeroe.setVida(miHeroe.getVida() - 1);
 							        }
@@ -206,7 +210,7 @@ public class Main {
 							        	Friend miAmigo = (Friend) personaje;
 							            miAmigo.kill();
 							        	
-							            misPersonajesCopia.remove(personaje);
+							            misPersonajesCopia.remove(i);
 
 							            miHeroe.setVida(miHeroe.getVida() - 3);
 
@@ -227,20 +231,20 @@ public class Main {
 					}
 
 				} else if (opcionJuego.equals("2")) {
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
-					///////////////////// OPCION 2 //////////////////
+////////////////////// OPCION 2 ///////////////////
 
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 					contadorPersonajes();
 					mostrarPersonajes();
 
 				} else if (opcionJuego.equals("3")) {
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
-					///////////////////// OPCION 3 //////////////////
+////////////////////// OPCION 3 ///////////////////
 
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 					ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("partida.dat"));
 
 					output.writeObject(misPersonajes);
@@ -251,11 +255,11 @@ public class Main {
 					System.out.println("Partida guardada correctamente.");
 
 				} else if (opcionJuego.equals("4")) {
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
-					///////////////////// OPCION 4 //////////////////
+////////////////////// OPCION 4 ///////////////////
 
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 					File archivo = new File("partida.dat");
 
 					if (archivo.exists()) {
@@ -268,11 +272,11 @@ public class Main {
 					System.out.println("Se ha creado una partida nueva");
 
 				} else if (opcionJuego.equals("5")) {
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
-					///////////////////// OPCION 4 //////////////////
+////////////////////// OPCION 5 ///////////////////
 
-					///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 					break;
 				} else {
 					System.out.println("Opción no válida");
