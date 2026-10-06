@@ -62,6 +62,8 @@ public class Main {
 		    System.out.println("No se ha encontrado el archivo de partida.");
 		} catch (IOException e) {
 	        System.out.println("Ha ocurrido un error al leer la partida.");
+	        System.out.println("Creando una pertida nueva");
+	        nuevoJuego();
 		} catch (ClassNotFoundException e) {
 	        System.out.println("No se ha encontrado la clase de un personaje.");
 	    }
